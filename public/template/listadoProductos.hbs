@@ -1,12 +1,16 @@
+{{#each productos}}
+
 <div class="card col-3 m-3 shadow-sm">
-  <img src="" class="card-img-top" alt="..." />
+  <img src="{{this.imagen}}" class="card-img-top" alt="..." />
   <div class="card-body">
-    <h5 class="card-title"></h5>
+    <h5 class="card-title">{{this.titulo}}</h5>
     <ul class="list-unstyled mt-3 mb-4">
-      <li class="list-group-item text-uppercase color"></li>
+      <li class="list-group-item text-uppercase color">{{this.color}}</li>
       <li class="list-group-item">Caracteristicas</li>
-      <li class="list-group-item precio"></li>
+      <li class="list-group-item precio">{{this.precio}}</li>
     </ul>
-    <a href="#" class="btn btn-primary agregar-carrito" data-id="">Comprar</a>
+    <a href="#" class="btn btn-primary agregar-carrito" data-id="{{this.id}}">Comprar</a>
   </div>
 </div>
+
+{{/each}}
