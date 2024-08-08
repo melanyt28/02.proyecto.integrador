@@ -1,0 +1,40 @@
+{
+    "productos": [
+        { 
+            "id": 1,
+            "titulo": "ACER",
+            "color": "Rojo",
+            "precio": 3453.30,
+            "imagen": "acer.jpg"
+        },
+        { 
+            "id": 2,
+            "titulo": "Advance",
+            "color": "Verde",
+            "precio": 2345.20,
+            "imagen": "advance.jpg"
+        },
+        { 
+            "id": 3,
+            "titulo": "Apple",
+            "color": "Azul",
+            "precio": 1234.50,
+            "imagen": "apple.jpg"
+        },
+        { 
+            "id": 4,
+            "titulo": "Dell",
+            "color": "Negro",
+            "precio": 5867.20,
+            "imagen": "dell.jpg"
+        }, 
+        { 
+            "id": 5,
+            "titulo": "Hp",
+            "color": "Blanco",
+            "precio": 234.50,
+            "imagen": "hp.jpg"
+        }
+    ]
+}
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Empezando con Javascript Avanzado</title>
+  </head>
+  <body data-bs-theme="dark">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Tienda EIT</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/nosotros.html">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/contacto.html">Contacto</a>
+              </li>
+            </ul>
+            
+            <div class="d-flex">
+              <div class="dropdown dropstart">
+                <a type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                </a>
+                <ul id="carrito" class="dropdown-menu mx-2">
+                  <table id="lista-carrito" class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                  <div class="d-grid gap-2 d-md-block justify-content-md-center ms-1">
+                    <button id="vaciar-carrito" class="btn btn-primary">Vaciar Carrito</button>
+                    <button id="procesar-pedido" class="btn btn-danger">Procesar Compra</button>
+                  </div>
+                </ul>
+              </div>
+            
+
+
+             <!--  <a href="pages/carrito.html" class="text-reset me-3">
+                
+              </a> -->
+            </div>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="row">
+        <!-- corousel -->
+      </section>
+
+      <section id="lista-productos" class="row my-5">
+        <!-- Acá voy a tener todos los productos -->
+      </section>
+
+    </main>
+    <footer class="container-fluid">
+
+    </footer>
+    
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
