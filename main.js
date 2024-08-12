@@ -37,3 +37,21 @@ const obtenerProductosYMostrarlos = async () => {
     }
 }
 
+function star() {
+    const ruta = String(location.href)
+    console.log(star)
+    if ( !ruta.includes('carrito.html') ) {
+        console.log('Estpy en carrito.html')
+    }else if ( ruta.includes('nosotros.html')){
+        console.log('Estoy en nosotros.html')
+    } else if ( ruta.includes('contacto.html')){
+        console.log('Estoy en contacto.html')
+    } else {
+        console.log('Estoy en un index.html')
+        obtenerProductosYMostrarlos()
+    }
+
+    }
+
+window.addEventListener('DOMContentLoaded', star)
+
