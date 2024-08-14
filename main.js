@@ -1,7 +1,8 @@
 import Handlebars from "handlebars";
 import * as bootstrap from 'bootstrap'; // Los script de bootstrap
-
 import "./style.css";
+import lstorage from "./src/local-storage"; // obj = { guardarProductoLocalStorage, vaciarLocalStorage }
+import carrito from "./src/carrito"; 
 
 const urlPlantilla = 'templates/listadoProductos.hbs'
 const urlBackProductos = 'http://localhost:8080/productos/'
@@ -47,6 +48,46 @@ const obtenerProductosYMostrarlos = async () => {
 
 }
 
+function insertoElProductoCarrito(producto, contenedorItemsCarrito) {
+
+    const row  = document.createElement('tr')
+
+    // TODO: Refactorizar y convertir esto en una plantilla
+    row.innerHTML = `
+        <td scope="col">
+            <img src="${producto.imagen}" alt="${producto.titulo}" width="100">
+        </td>
+        <td scope="col">${producto.titulo}</td>
+        <td scope="col">${producto.precio}</td>
+        <td scope="col">
+            <a href="#" class="borrar-producto fas fa-times-circle" data-id="${producto.id}" style="text-decoration: none;"></a>
+        </td>
+    `
+    console.log(row)
+
+    contenedorItemsCarrito.appendChild(row)
+    lstorage.guardarProductoLocalStorage(producto)
+    
+}
+
+function averiguarSiEstaEnCarrito(infoProducto) {
+    // Creamos una bandera que va a cambiar solo si entra dentro del if
+    
+    let productosLocal, existeDentroDelStorage = false
+
+    productosLocal = lstorage.obtenerProductosLocalStorage()
+
+    productosLocal.forEach(function(producto) {
+        //debugger
+        if (producto.id === infoProducto.id) {
+            existeDentroDelStorage = true
+        } 
+    })
+
+    return existeDentroDelStorage
+
+}
+
 function leerDataProducto(productoALeer) {
     console.log('Leyendo data...')
     console.log(productoALeer)
@@ -62,8 +103,18 @@ function leerDataProducto(productoALeer) {
 
     console.log(infoProducto)
 
-    const contenedorItemsCarrito = document.querySelector('#lista-carrito tbody')
+    const estaEnElCarrito = averiguarSiEstaEnCarrito(infoProducto) // <---- me devuelve true/false
 
+    if ( estaEnElCarrito ) {
+        console.warn('Ya está en el carrito')
+        // SweetAlert
+    } else {
+        console.warn('No esta en el carrito')
+        const contenedorItemsCarrito = document.querySelector('#lista-carrito tbody')
+        console.log(contenedorItemsCarrito)
+    
+        insertoElProductoCarrito(infoProducto, contenedorItemsCarrito)
+    }
 
 }
 
@@ -87,6 +138,19 @@ function esIndex() {
     console.log(listadoProductos)
 
     listadoProductos.addEventListener('click', e => comprarProducto(e))
+
+    const contenedorItemsCarrito = document.querySelector('#lista-carrito tbody')
+    lstorage.leerProductosLocalStorage(contenedorItemsCarrito)
+
+    const btnVaciarCarrito = document.querySelector('#vaciar-carrito')
+    console.log(btnVaciarCarrito)
+    btnVaciarCarrito.addEventListener('click', () => {
+        carrito.vaciarCarrito(contenedorItemsCarrito)
+    })
+
+    const elementoCarrito = document.querySelector('#carrito')
+    elementoCarrito.addEventListener('click', e => carrito.eliminarProductoCarrito(e))
+
 
 }
 
